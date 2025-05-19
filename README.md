@@ -46,18 +46,18 @@ Puedes ajustar estos parámetros editando los archivos correspondientes:
     SensorController.h: Sensibilidad de obstáculos (sensitivity)
     Robot.h: Velocidad predeterminada (defaultSpeed)
     
-/robot-bluetooth
-│
-├── src/│
-│   ├── Robot.ino          # Programa principal│
-│   ├── BoardMap.h         # Mapeo de pines por placa│
-│   ├── BluetoothController.h/.cpp  # Control Bluetooth│
-│   ├── MotorController.h/.cpp      # Control de motores│
-│   ├── SensorController.h/.cpp     # Sensores y servo│
-│   └── Robot.h/.cpp       # Lógica principal│
-│
-├── lib/                  # Dependencias (si las hay)│
-└── README.md             # Este archivo│
+		/robot-bluetooth
+		│
+		├── src/
+		│   ├── Robot.ino          # Programa principal
+		│   ├── BoardMap.h         # Mapeo de pines por placa
+		│   ├── BluetoothController.h/.cpp  # Control Bluetooth
+		│   ├── MotorController.h/.cpp      # Control de motores
+		│   ├── SensorController.h/.cpp     # Sensores y servo
+		│   └── Robot.h/.cpp       # Lógica principal
+		│
+		├── lib/                  # Dependencias (si las hay)
+		└── README.md             # Este archivo
 
 Plataformas Compatibles
     Arduino UNO/Mega
