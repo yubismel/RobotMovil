@@ -48,16 +48,16 @@ Puedes ajustar estos parámetros editando los archivos correspondientes:
     
 /robot-bluetooth
 │
-├── src/
-│   ├── Robot.ino          # Programa principal
-│   ├── BoardMap.h         # Mapeo de pines por placa
-│   ├── BluetoothController.h/.cpp  # Control Bluetooth
-│   ├── MotorController.h/.cpp      # Control de motores
-│   ├── SensorController.h/.cpp     # Sensores y servo
-│   └── Robot.h/.cpp       # Lógica principal
+├── src/│
+│   ├── Robot.ino          # Programa principal│
+│   ├── BoardMap.h         # Mapeo de pines por placa│
+│   ├── BluetoothController.h/.cpp  # Control Bluetooth│
+│   ├── MotorController.h/.cpp      # Control de motores│
+│   ├── SensorController.h/.cpp     # Sensores y servo│
+│   └── Robot.h/.cpp       # Lógica principal│
 │
-├── lib/                  # Dependencias (si las hay)
-└── README.md             # Este archivo
+├── lib/                  # Dependencias (si las hay)│
+└── README.md             # Este archivo│
 
 Plataformas Compatibles
     Arduino UNO/Mega
