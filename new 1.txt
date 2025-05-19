@@ -1,0 +1,458 @@
+#include "BluetoothController.h"
+
+void BluetoothController::init() {
+  BTserial.begin(9600);
+}
+
+String BluetoothController::getCommand() {
+  if (BTserial.available()) {
+    return BTserial.readStringUntil('\n');
+  }
+  return "";
+}
+
+#ifndef BLUETOOTHCONTROLLER_H
+#define BLUETOOTHCONTROLLER_H
+
+#include <SoftwareSerial.h>
+#include "BoardMap.h"
+
+class BluetoothController {
+public:
+  void init();
+  String getCommand();
+
+private:
+  SoftwareSerial BTserial = SoftwareSerial(BoardMap::bluetoothTX, BoardMap::bluetoothRX);
+};
+
+#endif
+
+#include "BoardMap.h"
+
+// Definición de pines para Arduino UNO/Mega
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_MEGA2560)
+const int BoardMap::motorRightReverse = 5;
+const int BoardMap::motorRightOn = 6;
+const int BoardMap::motorLeftReverse = 7;
+const int BoardMap::motorLeftOn = 8;
+const int BoardMap::chipEnableRight = 9;
+const int BoardMap::chipEnableLeft = 10;
+const int BoardMap::trigPin = 22;
+const int BoardMap::echoPin = 24;
+const int BoardMap::servoPin = 28;
+const int BoardMap::bluetoothTX = 11;
+const int BoardMap::bluetoothRX = 12;
+const int BoardMap::ledPin = 13;
+const int BoardMap::manualPingPin = 30;
+const int BoardMap::automaticPingPin = 31;
+const int BoardMap::irSensorPin = 26;
+
+// Definición de pines para Arduino SAMD (Zero, MKR1000)
+#elif defined(ARDUINO_SAMD_ZERO) || defined(ARDUINO_SAMD_MKR1000)
+const int BoardMap::motorRightReverse = 2;
+const int BoardMap::motorRightOn = 3;
+const int BoardMap::motorLeftReverse = 4;
+const int BoardMap::motorLeftOn = 5;
+const int BoardMap::chipEnableRight = 6;
+const int BoardMap::chipEnableLeft = 7;
+const int BoardMap::trigPin = 8;
+const int BoardMap::echoPin = 9;
+const int BoardMap::servoPin = 10;
+const int BoardMap::bluetoothTX = 11;
+const int BoardMap::bluetoothRX = 12;
+const int BoardMap::ledPin = 13;
+const int BoardMap::manualPingPin = A0;
+const int BoardMap::automaticPingPin = A1;
+const int BoardMap::irSensorPin = A2;
+
+// Definición de pines para ESP32
+#elif defined(ESP32)
+const int BoardMap::motorRightReverse = 18;
+const int BoardMap::motorRightOn = 19;
+const int BoardMap::motorLeftReverse = 21;
+const int BoardMap::motorLeftOn = 22;
+const int BoardMap::chipEnableRight = 23;
+const int BoardMap::chipEnableLeft = 25;
+const int BoardMap::trigPin = 26;
+const int BoardMap::echoPin = 27;
+const int BoardMap::servoPin = 13;
+const int BoardMap::bluetoothTX = 16;
+const int BoardMap::bluetoothRX = 17;
+const int BoardMap::ledPin = 2;
+const int BoardMap::manualPingPin = 32;
+const int BoardMap::automaticPingPin = 33;
+const int BoardMap::irSensorPin = 34;
+
+// Definición de pines para STM32
+#elif defined(STM32F1xx) || defined(STM32F4xx)
+const int BoardMap::motorRightReverse = PA5;
+const int BoardMap::motorRightOn = PA6;
+const int BoardMap::motorLeftReverse = PA7;
+const int BoardMap::motorLeftOn = PB0;
+const int BoardMap::chipEnableRight = PB1;
+const int BoardMap::chipEnableLeft = PB2;
+const int BoardMap::trigPin = PB3;
+const int BoardMap::echoPin = PB4;
+const int BoardMap::servoPin = PB5;
+const int BoardMap::bluetoothTX = PB6;
+const int BoardMap::bluetoothRX = PB7;
+const int BoardMap::ledPin = PC13;
+const int BoardMap::manualPingPin = PA0;
+const int BoardMap::automaticPingPin = PA1;
+const int BoardMap::irSensorPin = PA2;
+
+#endif
+
+#ifndef BOARDMAP_H
+#define BOARDMAP_H
+#define ARDUINO_AVR_MEGA2560
+// Definición de macros para identificar la placa
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_MEGA2560)
+  #define BOARD_TYPE "Arduino AVR"
+#elif defined(ARDUINO_SAMD_ZERO) || defined(ARDUINO_SAMD_MKR1000)
+  #define BOARD_TYPE "Arduino SAMD"
+#elif defined(ESP32)
+  #define BOARD_TYPE "ESP32"
+#elif defined(STM32F1xx) || defined(STM32F4xx)
+  #define BOARD_TYPE "STM32"
+#else
+  #error "Placa no soportada. Por favor, agrega las definiciones de pines para esta placa en BoardMap."
+#endif
+
+class BoardMap {
+public:
+  // Motores
+  static const int motorRightReverse;
+  static const int motorRightOn;
+  static const int motorLeftReverse;
+  static const int motorLeftOn;
+  static const int chipEnableRight;
+  static const int chipEnableLeft;
+
+  // Sensores ultrasónicos
+  static const int trigPin;
+  static const int echoPin;
+
+  // Servo
+  static const int servoPin;
+
+  // Bluetooth
+  static const int bluetoothTX;
+  static const int bluetoothRX;
+
+  // LED y otros
+  static const int ledPin;
+  static const int manualPingPin;
+  static const int automaticPingPin;
+
+  // Sensor IR
+  static const int irSensorPin;
+};
+
+#endif
+
+#include "BoardMap.h"
+
+
+// Definición de pines para Arduino UNO/Mega
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_MEGA2560)
+const int BoardMap::motorRightReverse = 5;
+const int BoardMap::motorRightOn = 6;
+const int BoardMap::motorLeftReverse = 7;
+const int BoardMap::motorLeftOn = 8;
+const int BoardMap::chipEnableRight = 9;
+const int BoardMap::chipEnableLeft = 10;
+const int BoardMap::trigPin = 22;
+const int BoardMap::echoPin = 24;
+const int BoardMap::servoPin = 28;
+const int BoardMap::bluetoothTX = 11;
+const int BoardMap::bluetoothRX = 12;
+const int BoardMap::ledPin = 13;
+const int BoardMap::manualPingPin = 30;
+const int BoardMap::automaticPingPin = 31;
+const int BoardMap::irSensorPin = 26;
+
+// Definición de pines para Arduino SAMD (Zero, MKR1000)
+#elif defined(ARDUINO_SAMD_ZERO) || defined(ARDUINO_SAMD_MKR1000)
+const int BoardMap::motorRightReverse = 2;
+const int BoardMap::motorRightOn = 3;
+const int BoardMap::motorLeftReverse = 4;
+const int BoardMap::motorLeftOn = 5;
+const int BoardMap::chipEnableRight = 6;
+const int BoardMap::chipEnableLeft = 7;
+const int BoardMap::trigPin = 8;
+const int BoardMap::echoPin = 9;
+const int BoardMap::servoPin = 10;
+const int BoardMap::bluetoothTX = 11;
+const int BoardMap::bluetoothRX = 12;
+const int BoardMap::ledPin = 13;
+const int BoardMap::manualPingPin = A0;
+const int BoardMap::automaticPingPin = A1;
+const int BoardMap::irSensorPin = A2;
+
+// Definición de pines para ESP32
+#elif defined(ESP32)
+const int BoardMap::motorRightReverse = 18;
+const int BoardMap::motorRightOn = 19;
+const int BoardMap::motorLeftReverse = 21;
+const int BoardMap::motorLeftOn = 22;
+const int BoardMap::chipEnableRight = 23;
+const int BoardMap::chipEnableLeft = 25;
+const int BoardMap::trigPin = 26;
+const int BoardMap::echoPin = 27;
+const int BoardMap::servoPin = 13;
+const int BoardMap::bluetoothTX = 16;
+const int BoardMap::bluetoothRX = 17;
+const int BoardMap::ledPin = 2;
+const int BoardMap::manualPingPin = 32;
+const int BoardMap::automaticPingPin = 33;
+const int BoardMap::irSensorPin = 34;
+
+// Definición de pines para STM32
+#elif defined(STM32F1xx) || defined(STM32F4xx)
+const int BoardMap::motorRightReverse = PA5;
+const int BoardMap::motorRightOn = PA6;
+const int BoardMap::motorLeftReverse = PA7;
+const int BoardMap::motorLeftOn = PB0;
+const int BoardMap::chipEnableRight = PB1;
+const int BoardMap::chipEnableLeft = PB2;
+const int BoardMap::trigPin = PB3;
+const int BoardMap::echoPin = PB4;
+const int BoardMap::servoPin = PB5;
+const int BoardMap::bluetoothTX = PB6;
+const int BoardMap::bluetoothRX = PB7;
+const int BoardMap::ledPin = PC13;
+const int BoardMap::manualPingPin = PA0;
+const int BoardMap::automaticPingPin = PA1;
+const int BoardMap::irSensorPin = PA2;
+
+#endif
+
+#include "SensorController.h"
+void SensorController::init(){
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  myservo.attach(28);
+}
+
+int SensorController::getDistance(){
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(5);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  long time = pulseIn(echoPin, HIGH);
+  return int(0.017 * time);
+}
+
+bool SensorController::checkObstacle(int angle){
+  myservo.write(angle);
+  delay(150);
+  return (getDistance() < sensitivity);
+}
+
+bool SensorController::I(){
+  return checkObstacle(120);
+}
+
+bool SensorController::C(){
+  return checkObstacle(75);
+}
+
+bool SensorController::D(){
+  return checkObstacle(30);
+}
+
+#include "MotorController.h"
+
+void MotorController::init() {
+  pinMode(motorRightReverse,OUTPUT);
+  pinMode(motorRightOn, OUTPUT);
+  pinMode(motorLeftReverse, OUTPUT);
+  pinMode(motorLeftOn, OUTPUT);
+  pinMode(chipEnableRight, OUTPUT);
+  pinMode(chipEnableLeft, OUTPUT);
+}
+
+void MotorController::goOn(byte speed) {
+  digitalWrite(chipEnableRight, HIGH);
+  analogWrite(motorRightOn, speed);
+  digitalWrite(motorRightReverse, LOW);
+
+  digitalWrite(chipEnableLeft, HIGH);
+  analogWrite(motorLeftOn, speed);
+  digitalWrite(motorLeftReverse, LOW);
+}
+
+void MotorController::goBack(byte speed) {
+  digitalWrite(chipEnableRight, HIGH);
+  digitalWrite(motorRightOn, LOW);
+  analogWrite(motorRightReverse, speed);
+
+  digitalWrite(chipEnableLeft, HIGH);
+  digitalWrite(motorLeftOn, LOW);
+  analogWrite(motorLeftReverse, speed);
+}
+
+void MotorController::stopMove() {
+  digitalWrite(chipEnableRight, LOW);
+  digitalWrite(motorRightOn, LOW);
+  digitalWrite(motorRightReverse, LOW);
+
+  digitalWrite(chipEnableLeft, LOW);
+  digitalWrite(motorLeftOn, LOW);
+  digitalWrite(motorLeftReverse, LOW);
+}
+
+void MotorController::moveLeft(byte speed) {
+  digitalWrite(chipEnableRight, HIGH);
+  analogWrite(motorRightOn, speed);
+  digitalWrite(motorRightReverse, LOW);
+
+  digitalWrite(chipEnableLeft, HIGH);
+  digitalWrite(motorLeftOn, LOW);
+  analogWrite(motorLeftReverse, speed);
+}
+
+void MotorController::moveRight(byte speed) {
+  digitalWrite(chipEnableRight, HIGH);
+  digitalWrite(motorRightOn, LOW);
+  analogWrite(motorRightReverse, speed);
+
+  digitalWrite(chipEnableLeft, HIGH);
+  analogWrite(motorLeftOn, speed);
+  digitalWrite(motorLeftReverse, LOW);
+}
+
+#include "Robot.h"
+
+void Robot::init() {
+  Serial.println("Robot iniciado");
+}
+
+void Robot::run() {
+  String command = bluetoothController.getCommand();
+  if (command !="" ) {
+    processCommand(command);
+  } else {
+    automaticMode();
+  }
+}
+
+void Robot::processCommand(String command) {
+  if (command == "w") motorController.goOn(100);
+  else if (command == "z") motorController.goBack(100);
+  else if (command == "s") motorController.stopMove();
+  else if (command == "a") motorController.moveLeft(100);
+  else if (command == "d") motorController.moveRight(100);
+}
+
+void Robot::automaticMode() {
+  if (!sensorController.I() && !sensorController.C() && !sensorController.D()) {
+    motorController.goOn(100);
+  } else if (sensorController.I()) {
+    motorController.moveRight(100);
+  } else if (sensorController.D()) {
+    motorController.moveLeft(100);
+  } else {
+    motorController.goBack(100);
+  }
+}
+
+#ifndef ROBOT_H
+#define ROBOT_H
+
+
+#include "MotorController.h"
+#include "SensorController.h"
+#include "BluetoothController.h"
+
+class Robot {
+public:
+  Robot(MotorController &motor, SensorController &sensor, BluetoothController &bluetooth)
+      : motorController(motor), sensorController(sensor), bluetoothController(bluetooth) {}
+
+  void init();
+  void run();
+
+private:
+  MotorController &motorController;
+  SensorController &sensorController;
+  BluetoothController &bluetoothController;
+
+  void processCommand(String command);
+  void automaticMode();
+};
+
+#endif
+
+
+#include "MotorController.h"
+#include "SensorController.h"
+#include "BluetoothController.h"
+#include "Robot.h"
+
+
+MotorController motorController;
+SensorController sensorController;
+BluetoothController bluetoothController;
+Robot robot(motorController, sensorController, bluetoothController);
+
+void setup() {
+  Serial.begin(9600);
+  motorController.init();
+  sensorController.init();
+  bluetoothController.init();
+  robot.init();
+}
+
+void loop() {
+  robot.run();
+}
+
+#ifndef MOTORCONTROLLER_H
+#define MOTORCONTROLLER_H
+#include "Arduino.h"
+#include "BoardMap.h"
+
+class MotorController{
+public:
+void init();
+void goOn(byte speed);
+  void goBack(byte speed);
+  void stopMove();
+  void moveLeft(byte speed);
+  void moveRight(byte speed);
+private:
+//Usamos los pines definidos en BoardMap
+  int motorRightReverse = BoardMap::motorRightReverse;
+  int motorRightOn = BoardMap::motorRightOn;
+  int motorLeftReverse = BoardMap::motorLeftReverse;
+  int motorLeftOn = BoardMap::motorLeftOn;
+  int chipEnableRight = BoardMap::chipEnableRight;
+  int chipEnableLeft = BoardMap::chipEnableLeft;
+};
+#endif
+
+#ifndef SENSORCONTROLLER_H
+#define SENSORCONTROLLER_H
+#include "Arduino.h"
+#include <Servo.h>
+#include "BoardMap.h"
+class SensorController{
+public:
+  void init();
+  int getDistance();
+  bool checkObstacle(int angle);
+  bool I();
+  bool C();
+  bool D();
+private:
+  Servo myservo;
+  const int trigPin = BoardMap::trigPin;
+  const int echoPin = BoardMap::echoPin;
+  const byte sensitivity = 70;
+  const int servoPin = BoardMap::servoPin;
+};
+#endif
+
