@@ -1,7 +1,6 @@
 # RobotMovil
 # Robot Arduino compatible
 Un firmware para un robot con capacidad de control remoto vía Bluetooth y modo automático con evasión de obstáculos, implementado para múltiples plataformas (Arduino, ESP32, STM32).
-
 ## Características principales
 	-Control de movimiento mediante comandos Bluetooth
 	-Modo automático con detección de obstáculos
