@@ -1,10 +1,10 @@
 # RobotMovil
 # Robot Arduino compatible
-Firmware genérico y configurable para un robot móvil, compatible con varios tipos de placas de desarrollo (UNO/Mega, ESP32, STM32 y otros).
+Firmware genérico y configurable para un robot móvil, compatible con varios tipos de placas de desarrollo (Arduinos: Nano/UNO/Mega, ESP32, STM32 y otros).
 Modular y configurable para permitir adicionar módulos de sensores y actuadores dependiendo del prototipo al que se le quiera instalar.
 ## Características principales
 	-Adición y configuración de módulos de sensores y actuadores mediante un fichero de configuración.
- 	Capacidad para incluir:
+ 	Capacidad:
 		Control de movimiento mediante comandos enviados por Bluetooth.
 		Modo automático con detección de obstáculos.
 		Comunicación serial.
