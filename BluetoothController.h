@@ -8,9 +8,10 @@ class BluetoothController {
 public:
   void init();
   String getCommand();
+  String getString();
 
 private:
-  SoftwareSerial BTserial = SoftwareSerial(BoardMap::bluetoothTX, BoardMap::bluetoothRX);
+  SoftwareSerial BTserial = SoftwareSerial(BoardMap::bluetoothRX, BoardMap::bluetoothTX);
 };
 
 #endif

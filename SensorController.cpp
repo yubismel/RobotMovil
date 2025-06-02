@@ -2,6 +2,7 @@
 void SensorController::init(){
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+  pinMode(sensorLightPin, INPUT);
   myservo.attach(28);
 }
 
@@ -12,6 +13,11 @@ int SensorController::getDistance(){
   delayMicroseconds(10);
   long time = pulseIn(echoPin, HIGH);
   return int(0.017 * time);
+}
+
+int SensorController::getLight(){
+  
+  return analogRead(sensorLightPin);
 }
 
 bool SensorController::checkObstacle(int angle){

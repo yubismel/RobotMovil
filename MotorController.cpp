@@ -1,60 +1,53 @@
 #include "MotorController.h"
 
-void MotorController::init() {
-  pinMode(motorRightReverse,OUTPUT);
-  pinMode(motorRightOn, OUTPUT);
-  pinMode(motorLeftReverse, OUTPUT);
-  pinMode(motorLeftOn, OUTPUT);
-  pinMode(chipEnableRight, OUTPUT);
-  pinMode(chipEnableLeft, OUTPUT);
+void MotorController::init() {  
+  pinMode(motorDirRight, OUTPUT);
+  pinMode(motorDirLeft, OUTPUT);
+  pinMode(motorDirEnable,OUTPUT);
+  
+  pinMode(motorDriveForward, OUTPUT);
+  pinMode(motorDriveBackward, OUTPUT);  
+  pinMode(motorDriveEnable, OUTPUT);
 }
 
 void MotorController::goOn(byte speed) {
-  digitalWrite(chipEnableRight, HIGH);
-  analogWrite(motorRightOn, speed);
-  digitalWrite(motorRightReverse, LOW);
-
-  digitalWrite(chipEnableLeft, HIGH);
-  analogWrite(motorLeftOn, speed);
-  digitalWrite(motorLeftReverse, LOW);
+  analogWrite(motorDriveEnable, speed);  
+  
+  digitalWrite(motorDriveBackward, LOW);
+  digitalWrite(motorDriveForward, HIGH);
+  
 }
 
 void MotorController::goBack(byte speed) {
-  digitalWrite(chipEnableRight, HIGH);
-  digitalWrite(motorRightOn, LOW);
-  analogWrite(motorRightReverse, speed);
-
-  digitalWrite(chipEnableLeft, HIGH);
-  digitalWrite(motorLeftOn, LOW);
-  analogWrite(motorLeftReverse, speed);
+  analogWrite(motorDriveEnable, speed);  
+  
+  digitalWrite(motorDriveForward, LOW);
+  digitalWrite(motorDriveBackward, HIGH);
 }
 
 void MotorController::stopMove() {
-  digitalWrite(chipEnableRight, LOW);
-  digitalWrite(motorRightOn, LOW);
-  digitalWrite(motorRightReverse, LOW);
-
-  digitalWrite(chipEnableLeft, LOW);
-  digitalWrite(motorLeftOn, LOW);
-  digitalWrite(motorLeftReverse, LOW);
+  analogWrite(motorDriveEnable, 0);  
+  
+  digitalWrite(motorDriveForward, LOW);
+  digitalWrite(motorDriveBackward, LOW);
 }
 
 void MotorController::moveLeft(byte speed) {
-  digitalWrite(chipEnableRight, HIGH);
-  analogWrite(motorRightOn, speed);
-  digitalWrite(motorRightReverse, LOW);
-
-  digitalWrite(chipEnableLeft, HIGH);
-  digitalWrite(motorLeftOn, LOW);
-  analogWrite(motorLeftReverse, speed);
+  analogWrite(motorDirEnable, speed);
+  
+  digitalWrite(motorDirRight, LOW);
+  digitalWrite(motorDirLeft, HIGH);
 }
 
 void MotorController::moveRight(byte speed) {
-  digitalWrite(chipEnableRight, HIGH);
-  digitalWrite(motorRightOn, LOW);
-  analogWrite(motorRightReverse, speed);
-
-  digitalWrite(chipEnableLeft, HIGH);
-  analogWrite(motorLeftOn, speed);
-  digitalWrite(motorLeftReverse, LOW);
+  analogWrite(motorDirEnable, speed);  
+  
+  digitalWrite(motorDirLeft, LOW);
+  digitalWrite(motorDirRight, HIGH);
+}
+void MotorController::stopMoveDir(byte speed) {
+  analogWrite(motorDirEnable, 0);  
+  
+  digitalWrite(motorDirLeft, LOW);
+  digitalWrite(motorDirRight, LOW);
 }

@@ -9,16 +9,18 @@ public:
   void init();
   void goOn(byte speed = DEFAULT_SPEED); 
   void goBack(byte speed);
-  void stopMove();
   void moveLeft(byte speed);
   void moveRight(byte speed);
+  void stopMove();
+  void stopMoveDir(byte speed);
 private:
-//Usamos los pines definidos en BoardMap
-  int motorRightReverse = BoardMap::motorRightReverse;
-  int motorRightOn = BoardMap::motorRightOn;
-  int motorLeftReverse = BoardMap::motorLeftReverse;
-  int motorLeftOn = BoardMap::motorLeftOn;
-  int chipEnableRight = BoardMap::chipEnableRight;
-  int chipEnableLeft = BoardMap::chipEnableLeft;
+//Usamos los pines definidos en BoardMap  
+  int motorDirRight = BoardMap::motorDirRight;
+  int motorDirLeft = BoardMap::motorDirLeft; 
+  int motorDirEnable = BoardMap::motorDirEnable;
+  
+  int motorDriveBackward = BoardMap::motorDriveBackward;  
+  int motorDriveForward = BoardMap::motorDriveForward;
+  int motorDriveEnable = BoardMap::motorDriveEnable;
 };
 #endif

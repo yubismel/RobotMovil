@@ -1,11 +1,31 @@
 #include "Robot.h"
 
 void Robot::init() {
-  Serial.println("Robot iniciado");
+ 
+    steperMotorController.step('l', 500);	
+    steperMotorController.step('r', 1000);
+    steperMotorController.step('l', 500);
+	lightController.dancing(); 
+	soundController.notify();
+	Serial.println("Robot iniciado");
 }
 
 void Robot::run() {
-  String command = bluetoothController.getCommand();
+ String command = bluetoothController.getString();
+ Serial.println("Test bluetooth....... ");
+ Serial.print("Receptor: ");
+ Serial.println(BoardMap::bluetoothRX);
+ Serial.print("Transmisor: ");
+ Serial.println(BoardMap::bluetoothTX);
+ Serial.print("BLUETOOTH_BAUD_RATE: ");
+ Serial.println(BLUETOOTH_BAUD_RATE);
+ Serial.print("Comando llegado por bluetooth: ");
+ Serial.println(command);
+
+ Serial.print("Mostrando datos del GPS: ");
+ String test = gpsController.getPosition();
+ test = gpsController.getPosition();
+  Serial.println(test);
   if (command !="" ) {
     processCommand(command);
   } else {
@@ -22,6 +42,7 @@ void Robot::processCommand(String command) {
 }
 
 void Robot::automaticMode() {
+
 //  if (millis() - lastSensorCheck < SENSOR_READ_INTERVAL) return;
   if (!sensorController.I() && !sensorController.C() && !sensorController.D()) {
     motorController.goOn(100);
