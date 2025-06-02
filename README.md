@@ -29,7 +29,7 @@ Las conexiones se definen según la placa seleccionada. Consulta el archivo 'Boa
 ## Instalación
 1. Clona este repositorio:
 bash
-   git clone https://github.com/tu-usuario/robot-bluetooth.git
+   git clone https://github.com/yubismel/robot-bluetooth.git
     Abre el proyecto en Arduino IDE o PlatformIO
     Selecciona la placa correcta en las herramientas
     Carga el programa en tu placa
