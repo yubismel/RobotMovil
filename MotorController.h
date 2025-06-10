@@ -12,7 +12,7 @@ public:
   void moveLeft(byte speed);
   void moveRight(byte speed);
   void stopMove();
-  void stopMoveDir(byte speed);
+  void stopMoveDir();
 private:
 //Usamos los pines definidos en BoardMap  
   int motorDirRight = BoardMap::motorDirRight;

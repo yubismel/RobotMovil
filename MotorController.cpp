@@ -1,4 +1,4 @@
-#include "MotorController.h"
+ #include "MotorController.h"
 
 void MotorController::init() {  
   pinMode(motorDirRight, OUTPUT);
@@ -45,7 +45,7 @@ void MotorController::moveRight(byte speed) {
   digitalWrite(motorDirLeft, LOW);
   digitalWrite(motorDirRight, HIGH);
 }
-void MotorController::stopMoveDir(byte speed) {
+void MotorController::stopMoveDir() {
   analogWrite(motorDirEnable, 0);  
   
   digitalWrite(motorDirLeft, LOW);

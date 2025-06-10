@@ -17,12 +17,12 @@ String BluetoothController::getCommand() {
   return "";
 }
 String BluetoothController::getString() {
-  Serial.println("__________________Funcion getString() ");
+  Serial.println("__Funcion getString() ");
   String cadena ="";
   while (BTserial.available()) 
   {
     cadena=cadena + BTserial.read();
-    Serial.print("________________BTserial available: ");
+    Serial.print("_BTserial available: ");
   }
   return cadena;
 }

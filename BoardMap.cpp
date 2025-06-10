@@ -2,15 +2,15 @@
 #include "Arduino.h"
 
 
-// Pines para Arduino UNO/Mega
+// For Arduino UNO/Mega
 #if defined(ARDUINO_AVR_MEGA2560)
 // Motors
-const int BoardMap::motorDirRight = 22;
-const int BoardMap::motorDirLeft = 23;
+const int BoardMap::motorDirLeft = 22;
+const int BoardMap::motorDirRight = 23;
 const int BoardMap::motorDirEnable = 2;
 
-const int BoardMap::motorDriveForward = 24;
-const int BoardMap::motorDriveBackward = 25;
+const int BoardMap::motorDriveBackward = 24;
+const int BoardMap::motorDriveForward = 25;
 const int BoardMap::motorDriveEnable = 3;
 
 //Stepers Motors
@@ -43,12 +43,10 @@ const int BoardMap::automaticPingPin = 34;
 const int BoardMap::irSensorPin = 35;
 
 const int BoardMap::sensorLightPin = A0;
-
 const int BoardMap::soundPin = 36;
-
 const int BoardMap::irPin = 37;
 
-// DefiniciÃ³n de pines para Arduino SAMD (Zero, MKR1000)
+// For Arduino SAMD (Zero, MKR1000)
 #elif defined(ARDUINO_SAMD_ZERO) || defined(ARDUINO_SAMD_MKR1000)
 const int BoardMap::motorDirEnable = 32;// 2
 const int BoardMap::motorDirRight = 33; //3
@@ -66,7 +64,7 @@ const int BoardMap::manualPingPin = A0;
 const int BoardMap::automaticPingPin = A1;
 const int BoardMap::irSensorPin = A2;
 
-// DefiniciÃ³n de pines para ESP32
+// For ESP32
 #elif defined(ESP32)
 const int BoardMap::motorDirEnable = 18;
 const int BoardMap::motorDirRight = 19;
@@ -84,7 +82,7 @@ const int BoardMap::manualPingPin = 32;
 const int BoardMap::automaticPingPin = 33;
 const int BoardMap::irSensorPin = 34;
 
-// DefiniciÃ³n de pines para STM32
+// For STM32
 #elif defined(STM32F1xx) || defined(STM32F4xx)
 const int BoardMap::motorDirEnable = PA5;
 const int BoardMap::motorDirRight = PA6;

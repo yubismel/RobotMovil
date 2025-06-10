@@ -5,6 +5,23 @@ void Robot::init() {
     steperMotorController.step('l', 500);	
     steperMotorController.step('r', 1000);
     steperMotorController.step('l', 500);
+	
+	 motorController.goOn(80);
+	  delay(1000);  
+	 motorController.goBack(80);
+	  delay(1000);  
+	 motorController.stopMove();
+	 delay(500);	 
+	 motorController.moveLeft(100);
+	  delay(1000);  
+	 motorController.moveRight(100);
+	  delay(2000);	  
+	   motorController.moveLeft(100);
+	  delay(1000);  
+	 motorController.stopMoveDir();
+	 
+	 
+	
 	lightController.dancing(); 
 	soundController.notify();
 	Serial.println("Robot iniciado");
@@ -29,7 +46,7 @@ void Robot::run() {
   if (command !="" ) {
     processCommand(command);
   } else {
-    automaticMode();
+  //  automaticMode();
   }
 }
 

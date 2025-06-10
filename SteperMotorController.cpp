@@ -3,9 +3,9 @@ void SteperMotorController::init() {
   pinMode(stepperPinA1, OUTPUT);
   pinMode(stepperPinA2, OUTPUT);
   pinMode(stepperPinB1, OUTPUT);
-  pinMode(stepperPinB2, OUTPUT);    			
-	 
+  pinMode(stepperPinB2, OUTPUT);    	 
 }
+
 void SteperMotorController::step(char d, int step){
 	if(d == 'l'){
 		  myStepper.setSpeed(15);

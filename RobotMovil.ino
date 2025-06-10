@@ -21,11 +21,7 @@ IrController irController;
 Robot robot(motorController, sensorController, bluetoothController, gpsController, lightController, steperMotorController, soundController, irController);
 
 void setup() {
-  // #ifdef DEBUG_MODE
-  //  Serial.begin(9600);
-  //  while(!Serial); // Para placas con USB nativo
-  //  Serial.println("Iniciando sistema...");
-  //  #endif
+  
   Serial.begin(9600);
   motorController.init();
   sensorController.init();
